@@ -24,34 +24,49 @@ ListNode* reverse(ListNode* head) {
     }
     
     bool isPalindrome(ListNode* head) {
-        ListNode* c=new ListNode(10);
-            ListNode* temp=head;
-            ListNode*  tempC=c;
-            while(temp!=NULL){
-                ListNode* Node=new ListNode(temp->val);
-                    tempC->next=Node;
+        // ListNode* c=new ListNode(10);
+        //     ListNode* temp=head;
+        //     ListNode*  tempC=c;
+        //     while(temp!=NULL){
+        //         ListNode* Node=new ListNode(temp->val);
+        //             tempC->next=Node;
                     
-                    temp=temp->next;
-                    tempC=tempC->next;
-                }
-                c=c->next;
-                c=reverse(c);
-                ListNode* a=head;
-                ListNode* b=c;
-                while(a!=NULL){
-                    if(a->val!=b->val)  {
-                         return false;
-                    }
-                        a=a->next;
-                        b=b->next;
+        //             temp=temp->next;
+        //             tempC=tempC->next;
+        //         }
+        //         c=c->next;
+        //         c=reverse(c);
+        //         ListNode* a=head;
+        //         ListNode* b=c;
+        //         while(a!=NULL){
+        //             if(a->val!=b->val)  {
+        //                  return false;
+        //             }
+        //                 a=a->next;
+        //                 b=b->next;
                     
-                }
-                    return true;
+        //         }
+        //             return true;
                 
-            }
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast->next!=NULL && fast->next->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+    }
+
+ListNode*newhead=reverse(slow->next);
+ListNode* a=head;
+ListNode* b=newhead;
+while(b!=NULL){
+    if(a->val!=b->val)   return false;
+    a=a->next;
+    b=b->next;
+}
+return true;
 
             
-        
+    }    
         
     
 };
