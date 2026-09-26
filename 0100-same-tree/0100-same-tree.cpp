@@ -28,9 +28,12 @@ public:
             return false;
         }
 
-        // Compare left and right subtrees
-        return isSameTree(p->left, q->left) &&
-               isSameTree(p->right, q->right);
+       bool leftans=isSameTree(p->left,q->left);
+       if(leftans==false) return false;
+       bool rightans=isSameTree(p->right,q->right);
+       if(rightans==false) return false;
+    //    return true;
     
+     return true;
     }
 };
